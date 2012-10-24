@@ -7,6 +7,7 @@ tmp
 dist
 /.idea
 /*.iml
+/.settings
 /out
 /.idea_modules
 /.classpath
