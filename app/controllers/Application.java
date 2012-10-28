@@ -219,4 +219,25 @@ public class Application extends Controller {
                 routes.Application.signIn()
         );
     }
+
+    // -- Evaluation
+
+    /**
+     * <p>The evaluation action.</p>
+     *
+     * <p>
+     * Constructs a {@code 200 OK} HTTP response, containing
+     * {@code app/views/evaluation.scala.html} as a body.
+     * </p>
+     *
+     * <p>
+     * Annotated with the {@link Secured} authenticator.
+     * </p>
+     *
+     * @return A {@code 200 OK} HTTP {@link Result}.
+     */
+    @Security.Authenticated(Secured.class)
+    public static Result evaluation() {
+        return ok(evaluation.render(User.find.byId(request().username())));
+    }
 }
