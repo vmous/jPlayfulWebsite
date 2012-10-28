@@ -2,6 +2,7 @@ package controllers;
 
 import javax.persistence.Id;
 
+import models.Evaluation;
 import models.User;
 import play.*;
 import play.data.Form;
@@ -239,5 +240,18 @@ public class Application extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result evaluation() {
         return ok(evaluation.render(User.find.byId(request().username())));
+    }
+
+    /**
+     * <p>The evaluation submission action.</p>
+     *
+     * @return A {@code 303 SEE_OTHER} HTTP {@link Result}.
+     */
+    public static Result evaluate() {
+        Form<Evaluation> form = form(Evaluation.class).bindFromRequest();
+
+        return redirect(
+                routes.Application.index()
+        );
     }
 }
