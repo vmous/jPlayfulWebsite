@@ -1,11 +1,16 @@
 package models;
 
+import java.util.List;
+
 import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.avaje.ebean.Ebean;
+
+import play.libs.Yaml;
 import play.test.*;
 
 import static play.test.Helpers.*;
@@ -27,9 +32,20 @@ public class UserTest extends TestCase {
 
     @Test
     public void testit() {
-        new User("vassilis@mailserver.gr", "Vassilis", "Moustakas", "secret").save();
-        assertNotNull(User.authenticate("vassilis@mailserver.gr", "secret"));
-        assertNull(User.authenticate("foo@mailserver.gr", "badpassword"));
-        assertNull(User.authenticate("bar@mailserver.gr", "secret"));
+        Ebean.save((List) Yaml.load("test-user-data.yml"));
+
+        // Count user
+        assertEquals(3, User.find.findRowCount());
+
+        // Authenticate users
+        assertNotNull(User.authenticate("bob@example.com", "secret"));
+        assertNotNull(User.authenticate("jane@example.com", "secret"));
+        assertNotNull(User.authenticate("jeff@example.com", "secret"));
+
+        assertNull(User.authenticate("bob@example.com", "badpassword"));
+        assertNull(User.authenticate("jane@example.com", "badpassword"));
+        assertNull(User.authenticate("jeff@example.com", "badpassword"));
+
+        assertNull(User.authenticate("tom@example.com", "secret"));
     }
 }
