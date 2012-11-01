@@ -1,17 +1,10 @@
 package models;
 
-import java.util.List;
-
 import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.avaje.ebean.Ebean;
-
-import play.libs.Yaml;
-import play.test.*;
 
 import static play.test.Helpers.*;
 
