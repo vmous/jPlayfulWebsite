@@ -9,6 +9,12 @@ import play.GlobalSettings;
 import play.Logger;
 import play.libs.Yaml;
 
+/**
+ * Class to encapsulate global application behaviour.
+ *
+ * @author billy
+ *
+ */
 public class Global extends GlobalSettings {
     @Override
     public void onStart(Application app) {

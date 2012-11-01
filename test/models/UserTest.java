@@ -20,7 +20,6 @@ public class UserTest extends TestCase {
     @Before
     public void setUp() throws Exception {
         start(fakeApplication(inMemoryDatabase()));
-
         super.setUp();
     }
 
@@ -32,8 +31,6 @@ public class UserTest extends TestCase {
 
     @Test
     public void testit() {
-        Ebean.save((List) Yaml.load("test-user-data.yml"));
-
         // Count user
         assertEquals(3, User.find.findRowCount());
 
