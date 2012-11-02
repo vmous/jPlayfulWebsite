@@ -16,6 +16,16 @@ import views.html.*;
 public class Application extends Controller {
     // -- Home page
 
+    /**
+     * <p>The index / home page action.</p>
+     *
+     * <p>
+     * Annotated with the {@link Secured} authenticator.
+     * </p>
+     *
+     * @return
+     */
+    @Security.Authenticated(Secured.class)
     public static Result index() {
         return ok(index.render("Your new application is ready."));
     }
