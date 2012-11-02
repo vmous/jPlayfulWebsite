@@ -14,7 +14,7 @@ import views.html.*;
  *
  */
 public class Application extends Controller {
-    // -- Home page
+    // -- Home
 
     /**
      * <p>The index / home page action.</p>
@@ -27,10 +27,10 @@ public class Application extends Controller {
      */
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(index.render("Your new application is ready."));
+        return ok(index.render("Your new application is ready.", User.find.byId(request().username())));
     }
 
-    // -- Sign-in / Log-in page
+    // -- Sign-in / Log-in
 
     /**
      * The inner class that backs the sign-in page.
@@ -117,5 +117,26 @@ public class Application extends Controller {
             );
         }
         return res;
+    }
+
+    // -- Sign-out / Log-out
+
+    /**
+     * <p>The sign-out action.</p>
+     *
+     * <p>
+     * Cleans up the session and adds a success message to the flash scope.
+     * </p>
+     *
+     * @return A {@code 303 SEE_OTHER} HTTP {@link Result} pointing to
+     * {@link Application.signIn()} action.
+     */
+    public static Result signOut() {
+        session().clear();
+        flash("success", "You've successfully signed out.");
+
+        return redirect(
+                routes.Application.signIn()
+        );
     }
 }
