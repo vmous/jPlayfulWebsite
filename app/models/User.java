@@ -3,21 +3,18 @@ package models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.avaje.ebean.validation.NotEmpty;
+
+import play.data.format.Formats.NonEmpty;
+import play.data.validation.Constraints.Email;
+import play.data.validation.Constraints.MaxLength;
+import play.data.validation.Constraints.MinLength;
+import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 /**
  * <p>
  * Class representing the application user.
- * </p>
- *
- * <p>
- * <strong>Warning</strong>: Passwords are manipulated in clear text. This is,
- * obviously a very bad practice, but for the time being we leave it as it is.
- * </p>
- *
- * <p>
- * TODO: A better approach would be to hash the password before storing it,
- * and then hash it before using it.
  * </p>
  *
  * @author billy
@@ -29,6 +26,9 @@ public class User extends Model {
      * The user's email.
      */
     @Id
+    @Email(message = "Please enter a valid e-mail address")
+    @NonEmpty
+    @Required(message = "Please enter your e-mail")
     public String email;
 
     /**
@@ -44,6 +44,9 @@ public class User extends Model {
     /**
      * The user's password.
      */
+    @Required(message = "Please provide a password")
+    @MinLength(6)
+    @MaxLength(20)
     public String password;
 
     /**

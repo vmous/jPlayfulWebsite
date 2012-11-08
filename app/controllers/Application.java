@@ -1,11 +1,17 @@
 package controllers;
 
+import javax.persistence.Id;
+
 import models.User;
 import play.*;
 import play.data.Form;
+import play.data.validation.Constraints.Email;
+import play.data.validation.Constraints.Required;
 import play.mvc.*;
+import scala.App;
 
 import views.html.*;
+import views.html.defaultpages.todo;
 
 /**
  * The controller class for the application action methods.
@@ -27,7 +33,73 @@ public class Application extends Controller {
      */
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(index.render("Your new application is ready.", User.find.byId(request().username())));
+        return ok(index.render("Your new application is ready", User.find.byId(request().username())));
+    }
+
+    // -- Sign-up
+
+    /**
+     * <p>The sign-up action.</p>
+     *
+     * <p>
+     * Constructs a {@code 200 OK} HTTP response, containing
+     * {@code app/views/signup.scala.html} as a body.
+     * </p>
+     *
+     * @return A {@code 200 OK} HTTP {@link Result}.
+     */
+    public static Result signUp() {
+
+        return ok(
+                signup.render(form(User.class))
+        );
+    }
+
+    /**
+     * <p>The registration action.</p>
+     *
+     * <p>
+     * Checks the submitted form for errors. If no errors were found it
+     * constructs a {@code 303 SEE_OTHER} HTTP response pointing to
+     * {@link Application.index()} action. In case of errors it prepares a
+     * {@code 400 BAD_REQUEST} HTTP response with
+     * {@code app/views/signup.scala.html} as body.
+     * </p>
+     *
+     * @return A {@code 303 SEE_OTHER} HTTP {@link Result} if the request has
+     *         no errors; a {@code 400 BAD_REQUEST} HTTP {@link Result}
+     *         otherwise.
+     */
+    public static Result register() {
+        Result res = null;
+        Form<User> form = form(User.class).bindFromRequest();
+
+        // Check if e-mail confirmation is successful
+        if(!form.field("email").value().equals(form.field("confirm-email").value())) {
+            form.reject("confirm-email", "Emails should match");
+        }
+
+        // Check if password confirmation is successful
+        if(!form.field("password").value().equals(form.field("confirm-password").value())) {
+            form.reject("confirm-password", "Passwords should match");
+        }
+
+        if(form.hasErrors()) {
+            res = badRequest(
+                    signup.render(form)
+            );
+        }
+        else {
+            User user = form.get();
+            user.save();
+            session().clear();
+            session("email", form.get().email);
+            res = redirect(
+                    routes.Application.index()
+            );
+        }
+
+        return res;
     }
 
     // -- Sign-in / Log-in
@@ -42,11 +114,13 @@ public class Application extends Controller {
         /**
          * The e-mail to be authenticated.
          */
+        @Required(message = "Please enter your e-mail")
         public String email;
 
         /**
          * The password with which to authenticate the e-mail.
          */
+        @Required(message = "Please enter your password")
         public String password;
 
         /**
@@ -116,6 +190,7 @@ public class Application extends Controller {
                     routes.Application.index()
             );
         }
+
         return res;
     }
 
@@ -133,7 +208,7 @@ public class Application extends Controller {
      */
     public static Result signOut() {
         session().clear();
-        flash("success", "You've successfully signed out.");
+        flash("success", "You've successfully signed out");
 
         return redirect(
                 routes.Application.signIn()

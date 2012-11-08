@@ -1,0 +1,57 @@
+@(signUpForm: Form[User])
+
+@main("Welcome to Play 2.0 | Sign-Up", null) {
+    
+    @helper.form(routes.Application.register) {
+        <fieldset>
+            <legend><h1>Sign up</h1></legend>
+            
+            @if(signUpForm.hasErrors) {
+                <div class="alert alert-error">
+                    <ul>
+                        @for((field, error) <- signUpForm.errors) {
+                            <li>
+                                <a class="close" data-dismiss="alert">x</a>@signUpForm.error(field).message
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+            
+            @if(flash.contains("success")) {
+                <div class="alert alert-success">
+                <a class="close" data-dismiss="alert">×</a>
+                    @flash.get("success")
+                </div>
+            }
+    
+            <p>
+                <input type="text" name="email" placeholder="Email" value="@signUpForm("email").value"> *
+            </p>
+            <p>
+                <input type="text" name="confirm-email" placeholder="Confirm Email">
+            </p>
+            <p>
+                <input type="text" name="name" placeholder="Name" value="@signUpForm("name").value">
+            </p>
+            <p>
+                <input type="text" name="surname" placeholder="Surname" value="@signUpForm("surname").value">
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="Password"> *
+            </p>
+            <p>
+                <input type="password" name="confirm-password" placeholder="Confirm Password">
+            </p>
+            <p>
+            <p>
+                * Required fields
+            </p>
+        </fieldset>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">@Messages("Sign in")</button>
+        </div>
+    }
+
+}

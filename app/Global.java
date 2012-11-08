@@ -1,7 +1,5 @@
 import java.util.List;
 
-import models.*;
-
 import com.avaje.ebean.Ebean;
 
 import play.Application;
@@ -24,6 +22,7 @@ public class Global extends GlobalSettings {
         if (models.User.find.findRowCount() == 0) {
             Ebean.save((List) Yaml.load("test-user-data.yml"));
         }
+
     }
 
     @Override

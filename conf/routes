@@ -5,6 +5,10 @@
 # Home
 GET     /                           controllers.Application.index()
 
+# Sign-up
+GET     /signup                     controllers.Application.signUp()
+POST    /register                   controllers.Application.register()
+
 # Sign-in / Log-in
 GET     /signin                     controllers.Application.signIn()
 POST    /authenticate               controllers.Application.authenticate()

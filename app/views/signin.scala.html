@@ -1,40 +1,42 @@
-@(form: Form[Application.SignIn])
+@(signInForm: Form[Application.SignIn])
 
-<html>
-    <head>
-        <title>GPP Sign-in Page</title>
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
-    </head>
-    <body>
-        <header>
-            <a href="@routes.Application.index" id="logo"><span>GPP</span> Home Page</a>
-        </header>
+@main("Welcome to Play 2.0 | Sign-In", null) {
 
-        @helper.form(routes.Application.authenticate) {
-            <h1>Sign in</h1>
+    @helper.form(routes.Application.authenticate) {
+        <fieldset>
+            <legend><h1>Sign in</h1></legend>
 
-            @if(form.hasGlobalErrors) {
-                <p class="error">
-                    @form.globalError.message
-                </p>
+            @if(signInForm.hasErrors) {
+                <div class="alert alert-error">
+                    <ul>
+                        @for((field, error) <- signInForm.errors) {
+                            <li>
+                                <a class="close" data-dismiss="alert">x</a>@signInForm.error(field).message
+                            </li>
+                        }
+                    </ul>
+                </div>
             }
-            
+
             @if(flash.contains("success")) {
-                <p class="success">
+                <div class="alert alert-success">
+                    <a class="close" data-dismiss="alert">×</a>
                     @flash.get("success")
-                </p>
+                </div>
             }
-		
+
             <p>
-                <input type="email" name="email" placeholder="Email" value="@form("email").value">
+                <input type="text" name="email" placeholder="Email" value="@signInForm("email").value">
             </p>
             <p>
                 <input type="password" name="password" placeholder="Password">
             </p>
-            <p>
-                <button type="submit">Login</button>
-            </p>
-        }
-    </body>
-</html>
+        </fieldset>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">@Messages("Sign in")</button> @Messages("or") <a href="./signup">Sign-up</a>
+        </div>
+        
+    }
+
+}
