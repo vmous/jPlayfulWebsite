@@ -3,8 +3,6 @@ package models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.avaje.ebean.validation.NotEmpty;
-
 import play.data.format.Formats.NonEmpty;
 import play.data.validation.Constraints.Email;
 import play.data.validation.Constraints.MaxLength;
@@ -58,7 +56,7 @@ public class User extends Model {
      * Constructor
      *
      * @param email     The email address of the user. This will serve as a
-     *                  username and id for the the application
+     *                  username and id for the the application.
      * @param name      The name of the user.
      * @param surname   The surname of the user.
      * @param password  The password of the user.

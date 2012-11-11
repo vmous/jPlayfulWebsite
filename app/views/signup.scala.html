@@ -1,10 +1,10 @@
 @(signUpForm: Form[User])
 
-@main("Welcome to Play 2.0 | Sign-Up", null) {
+@main("Sign-Up", null) {
     
     @helper.form(routes.Application.register) {
         <fieldset>
-            <legend><h1>Sign up</h1></legend>
+            <legend><h1>Sign-Up</h1></legend>
             
             @if(signUpForm.hasErrors) {
                 <div class="alert alert-error">

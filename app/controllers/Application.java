@@ -26,14 +26,19 @@ public class Application extends Controller {
      * <p>The index / home page action.</p>
      *
      * <p>
+     * Constructs a {@code 200 OK} HTTP response, containing
+     * {@code app/views/index.scala.html} as a body.
+     * </p>
+     *
+     * <p>
      * Annotated with the {@link Secured} authenticator.
      * </p>
      *
-     * @return
+     * @return A {@code 200 OK} HTTP {@link Result}.
      */
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(index.render("Your new application is ready", User.find.byId(request().username())));
+        return ok(index.render(User.find.byId(request().username())));
     }
 
     // -- Sign-up

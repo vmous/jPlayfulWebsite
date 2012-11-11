@@ -1,10 +1,10 @@
 @(signInForm: Form[Application.SignIn])
 
-@main("Welcome to Play 2.0 | Sign-In", null) {
+@main("Sign-In", null) {
 
     @helper.form(routes.Application.authenticate) {
         <fieldset>
-            <legend><h1>Sign in</h1></legend>
+            <legend><h1>Sign-In</h1></legend>
 
             @if(signInForm.hasErrors) {
                 <div class="alert alert-error">
@@ -34,7 +34,7 @@
         </fieldset>
 
         <div class="form-actions">
-            <button type="submit" class="btn btn-success">@Messages("Sign in")</button> @Messages("or") <a href="./signup">Sign-up</a>
+            <button type="submit" class="btn btn-success">@Messages("Sign in")</button> @Messages("or") <a href="@routes.Application.signUp">Sign-up</a>
         </div>
         
     }
