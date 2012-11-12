@@ -91,18 +91,14 @@ public class Application extends Controller {
         }
 
         if(form.hasErrors()) {
-            res = badRequest(
-                    signup.render(form)
-            );
+            res = badRequest(signup.render(form));
         }
         else {
             User user = form.get();
             user.save();
             session().clear();
             session("email", form.get().email);
-            res = redirect(
-                    routes.Application.index()
-            );
+            res = redirect(routes.Application.index());
         }
 
         return res;
@@ -192,9 +188,7 @@ public class Application extends Controller {
         else {
             session().clear();
             session("email", form.get().email);
-            res = redirect(
-                    routes.Application.index()
-            );
+            res = redirect(routes.Application.index());
         }
 
         return res;
@@ -216,9 +210,7 @@ public class Application extends Controller {
         session().clear();
         flash("success", "You've successfully signed out");
 
-        return redirect(
-                routes.Application.signIn()
-        );
+        return redirect(routes.Application.signIn());
     }
 
     // -- Evaluation
@@ -239,7 +231,7 @@ public class Application extends Controller {
      */
     @Security.Authenticated(Secured.class)
     public static Result evaluation() {
-        return ok(evaluation.render(User.find.byId(request().username())));
+        return ok(evaluation.render(form(Evaluation.class), User.find.byId(request().username())));
     }
 
     /**
@@ -248,10 +240,19 @@ public class Application extends Controller {
      * @return A {@code 303 SEE_OTHER} HTTP {@link Result}.
      */
     public static Result evaluate() {
+        Result res = null;
         Form<Evaluation> form = form(Evaluation.class).bindFromRequest();
 
-        return redirect(
-                routes.Application.index()
-        );
+        if (form.hasErrors()) {
+            res = badRequest(evaluation.render(form, User.find.byId(request().username())));
+        }
+        else {
+            Evaluation evaluation = form.get();
+            evaluation.save();
+            flash("success", "Thank you for your time. Your evaluation has been successfully saved.");
+            res =  redirect(routes.Application.index());
+        }
+
+        return res;
     }
 }

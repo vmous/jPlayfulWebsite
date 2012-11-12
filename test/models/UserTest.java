@@ -11,8 +11,6 @@ import org.junit.Test;
 
 import play.mvc.Result;
 
-import com.google.common.collect.ImmutableMap;
-
 import static play.test.Helpers.*;
 
 public class UserTest extends TestCase {

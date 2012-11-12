@@ -1,9 +1,10 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 /**
@@ -20,8 +21,8 @@ public class Evaluation extends Model {
      * The evaluation's unique id.
      */
     @Id
-    @Required
-    public String id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    protected Long id;
 
     /**
      * Question one (1).
