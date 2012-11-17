@@ -21,6 +21,22 @@ import views.html.defaultpages.todo;
  *
  */
 public class Application extends Controller {
+    // -- Welcome
+
+    /**
+     * <p>The welcome page action.</p>
+     *
+     * <p>
+     * Constructs a {@code 200 OK} HTTP response, containing
+     * {@code app/views/welcome.scala.html} as a body.
+     * </p>
+     *
+     * @return A {@code 200 OK} HTTP {@link Result}.
+     */
+    public static Result welcome() {
+        return ok(welcome.render());
+    }
+
     // -- Home
 
     /**

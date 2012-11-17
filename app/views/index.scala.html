@@ -1,28 +1,36 @@
 @(user: User)
 
 @main("Home", user) {
-	<section>
-	    <div class="sample">&lt;section&gt;</div>
-	    <article>
-	        <div class="sample">&lt;article&gt;</div>
-	        <header>
-	            <h1><a href="">HTML 5 YouTube video</a></h1>
-	        </header>
-	        <iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/ZJPUu1wev3o" frameborder="0">
-	        </iframe>
-	    </article>
-	    
-	    <article>
-	        <div class="sample">&lt;article&gt;</div>
-	        <header>
-	            <h1><a href="">History</a></h1>
-	        </header>
-	        <p>Work on&#160;HTML 5&#160;originally started in&#160;late 2003, as&#160;a&#160;proof of&#160;concept to&#160;show that it&#160;was possible to&#160;extend HTML 4's&#160;forms to&#160;provide many of&#160;the features that XForms 1.0&#160;introduced, without requiring browsers to&#160;implement rendering engines that were incompatible with existing HTML Web pages. At&#160;this early stage, while the draft was already publicly available, and input was already being solicited from all sources, the specification was only under Opera Software's&#160;copyright.</p>
-	        <p>In&#160;early 2004, some of&#160;the principles that underlie this effort, as&#160;well as&#160;an&#160;early draft proposal covering just forms-related features, were presented to&#160;the W3C jointly by&#160;Mozilla and Opera at&#160;a&#160;workshop discussing the future of&#160;Web Applications on&#160;the Web. The proposal was rejected on&#160;the grounds that the proposal conflicted with the previously chosen direction for the Web's&#160;evolution.</p>
-	        <p>Shortly thereafter, Apple, Mozilla, and Opera jointly announced their intent to&#160;continue working on&#160;the effort. A&#160;public mailing list was created, and the drafts were moved to&#160;the WHATWG site. The copyright was subsequently amended to&#160;be&#160;jointly owned by&#160;all three vendors, and to&#160;allow reuse of&#160;the specifications.</p>
-	        <p>In&#160;2006, the W3C expressed interest in&#160;the specification, and created a&#160;working group chartered to&#160;work with the WHATWG on&#160;the development of&#160;the HTML 5&#160;specifications. The working group opened in&#160;2007. Apple, Mozilla, and Opera allowed the W3C to&#160;publish the specifications under the W3C copyright, while keeping versions with the less restrictive license on&#160;the WHATWG site.</p>
-	        <p>Since then, both groups have been working together.</p>
-	    </article>
-	</section>
-}
+    <section>
+        @if(user != null) {
+            <dl id="user">
+            @defining(user.name + " " + user.surname) { fullname =>
+                <dt>Hello @fullname <span>(@user.email)</span></dt>
+            }
+            <dd><a href="@routes.Application.signOut">Sign-out</a></dd>
+            <dd><a href="@routes.Application.evaluation">Evaluation</a></dd>    
+            </dl>
+        }
+    </section>
 
+    <section>
+        <article>
+            <header>
+                <h1><a href="">HTML 5 YouTube video</a></h1>
+            </header>
+            <iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/ZJPUu1wev3o" frameborder="0">
+            </iframe>
+        </article>
+
+        <article>
+            <header>
+                <h1><a href="">History</a></h1>
+            </header>
+            <p>Work on&#160;HTML 5&#160;originally started in&#160;late 2003, as&#160;a&#160;proof of&#160;concept to&#160;show that it&#160;was possible to&#160;extend HTML 4's&#160;forms to&#160;provide many of&#160;the features that XForms 1.0&#160;introduced, without requiring browsers to&#160;implement rendering engines that were incompatible with existing HTML Web pages. At&#160;this early stage, while the draft was already publicly available, and input was already being solicited from all sources, the specification was only under Opera Software's&#160;copyright.</p>
+            <p>In&#160;early 2004, some of&#160;the principles that underlie this effort, as&#160;well as&#160;an&#160;early draft proposal covering just forms-related features, were presented to&#160;the W3C jointly by&#160;Mozilla and Opera at&#160;a&#160;workshop discussing the future of&#160;Web Applications on&#160;the Web. The proposal was rejected on&#160;the grounds that the proposal conflicted with the previously chosen direction for the Web's&#160;evolution.</p>
+            <p>Shortly thereafter, Apple, Mozilla, and Opera jointly announced their intent to&#160;continue working on&#160;the effort. A&#160;public mailing list was created, and the drafts were moved to&#160;the WHATWG site. The copyright was subsequently amended to&#160;be&#160;jointly owned by&#160;all three vendors, and to&#160;allow reuse of&#160;the specifications.</p>
+            <p>In&#160;2006, the W3C expressed interest in&#160;the specification, and created a&#160;working group chartered to&#160;work with the WHATWG on&#160;the development of&#160;the HTML 5&#160;specifications. The working group opened in&#160;2007. Apple, Mozilla, and Opera allowed the W3C to&#160;publish the specifications under the W3C copyright, while keeping versions with the less restrictive license on&#160;the WHATWG site.</p>
+            <p>Since then, both groups have been working together.</p>
+        </article>
+    </section>
+}
