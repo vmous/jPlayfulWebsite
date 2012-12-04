@@ -1,10 +1,10 @@
 @(signInForm: Form[Application.SignIn])
 
-@main("Sign-In", null) {
+@main(Messages("signin.title"), null) {
 
     @helper.form(routes.Application.authenticate) {
         <fieldset>
-            <legend><h1>Sign-In</h1></legend>
+            <legend><h1>@Messages("signin.title")</h1></legend>
 
             @if(signInForm.hasErrors) {
                 <div class="alert alert-error">
@@ -27,23 +27,23 @@
             
             <form class="form-horizontal">
                 <div class="control-group">
-                    <label class="control-label" for="email">Email</label>
+                    <label class="control-label" for="email">@Messages("forms.email")</label>
                     <div class="controls">
-                        <input type="text" name="email" id="email" placeholder="Email" value="@signInForm("email").value">
+                        <input type="text" name="email" id="email" placeholder="@Messages("forms.email")" value="@signInForm("email").value">
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="password">Password</label>
+                    <label class="control-label" for="password">@Messages("forms.password")</label>
                     <div class="controls">
-                        <input type="password" name="password" id="password" placeholder="Password">
+                        <input type="password" name="password" id="password" placeholder="@Messages("forms.password")">
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <label class="checkbox">
-                            <input type="checkbox"> Remember me
+                            <input type="checkbox"> @Messages("forms.rememberme")
                         </label>
-                        <button type="submit" class="btn">Sign in</button> @Messages("or") <a href="@routes.Application.signUp">Sign-up</a>
+                        <button type="submit" class="btn">@Messages("forms.signin")</button> @Messages("misc.or") <a href="@routes.Application.signUp">@Messages("forms.signup")</a>
                     </div>
                 </div>
             </form>
