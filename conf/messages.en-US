@@ -1,5 +1,5 @@
 # Application
-app.name = Playfull Website
+app.name = Playful Website
 
 # Forms
 forms.signin = Sign-in
@@ -7,11 +7,16 @@ forms.signup = Sign-up
 forms.signout = Sign-out
 forms.submit = Submit
 forms.email = Email
+forms.email.confirm = Confirm Email
 forms.password = Password
+forms.password.confirm = Confirm Password
+forms.name = Name
+forms.surname = Surname
 forms.rememberme = Remember Me
+forms.required = Required fields
 
 # Evaluation
-evaluation.title = Evaluation 
+evaluation.title = Evaluation
 evaluation.q1 = Question 1
 evaluation.q2 = Question 2
 evaluation.q3 = Question 3
@@ -33,11 +38,15 @@ main.home = Home
 main.about = About
 main.contact = Contact
 main.dropdown = Dropdown
+main.languages = Languages
+main.languages.enus = English (US)
+main.languages.elgr = Greek
 
 # Sign In
 signin.title = Sign In
 
 # Sign Up
+signup.title = Sign Up
 
 # Welcome
 welcome.title = Welcome

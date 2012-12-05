@@ -1,10 +1,10 @@
 @(signUpForm: Form[User])
 
-@main("Sign-Up", null) {
+@main(Messages("signup.title"), null) {
     
     @helper.form(routes.Application.register) {
         <fieldset>
-            <legend><h1>Sign-Up</h1></legend>
+            <legend><h1>@Messages("signup.title")</h1></legend>
             
             @if(signUpForm.hasErrors) {
                 <div class="alert alert-error">
@@ -26,31 +26,31 @@
             }
     
             <p>
-                <input type="text" name="email" placeholder="Email" value="@signUpForm("email").value"> *
+                <input type="text" name="email" placeholder="@Messages("forms.email")" value="@signUpForm("email").value"> *
             </p>
             <p>
-                <input type="text" name="confirm-email" placeholder="Confirm Email">
+                <input type="text" name="confirm-email" placeholder="@Messages("forms.email.confirm")">
             </p>
             <p>
-                <input type="text" name="name" placeholder="Name" value="@signUpForm("name").value">
+                <input type="text" name="name" placeholder="@Messages("forms.name")" value="@signUpForm("name").value">
             </p>
             <p>
-                <input type="text" name="surname" placeholder="Surname" value="@signUpForm("surname").value">
+                <input type="text" name="surname" placeholder="@Messages("forms.surname")" value="@signUpForm("surname").value">
             </p>
             <p>
-                <input type="password" name="password" placeholder="Password"> *
+                <input type="password" name="password" placeholder="@Messages("forms.password")"> *
             </p>
             <p>
-                <input type="password" name="confirm-password" placeholder="Confirm Password">
+                <input type="password" name="confirm-password" placeholder="@Messages("forms.password.confirm")">
             </p>
             <p>
             <p>
-                * Required fields
+                * @Messages("forms.required")
             </p>
         </fieldset>
 
         <div class="form-actions">
-            <button type="submit" class="btn btn-success">@Messages("Sign in")</button>
+            <button type="submit" class="btn btn-success">@Messages("forms.signup")</button>
         </div>
     }
 
