@@ -42,6 +42,14 @@ main.languages = Languages
 main.languages.enus = English (US)
 main.languages.elgr = Greek
 
+# 404
+pagenotfound.title = Page Not Found
+pagenotfound.notfound = Not found
+pagenotfound.sorry = Sorry, but the page you were trying to view does not exist.
+pagenotfound.potential = It looks like this was the result of either
+pagenotfound.potential.1 = a mistyped address
+pagenotfound.potential.2 = an out-of-date link
+
 # Sign In
 signin.title = Sign In
 
