@@ -1,6 +1,6 @@
 import sbt._
 import Keys._
-import PlayProject._
+import play.Project._
 
 object ApplicationBuild extends Build {
 
@@ -9,12 +9,19 @@ object ApplicationBuild extends Build {
 
     val appDependencies = Seq(
       // Add your project dependencies here,
-      "org.webjars" % "webjars-play" % "0.1",
-      "org.webjars" % "jquery" % "1.8.2",
-      "org.webjars" % "bootstrap" % "2.2.1"
+//      jdbc,
+//      anorm,
+      javaCore,
+//      javaJdbc,
+      javaEbean,
+//     javaJpa,
+//      filters,
+      "org.webjars" % "webjars-play" % "2.1.0",
+      "org.webjars" % "jquery" % "1.9.1",
+      "org.webjars" % "bootstrap" % "2.3.0"
     )
 
-    val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
+    val main = play.Project(appName, appVersion, appDependencies).settings(
       // Add your own project settings here      
     )
 

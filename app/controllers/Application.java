@@ -6,6 +6,7 @@ import models.Evaluation;
 import models.User;
 import play.*;
 import play.data.Form;
+import static play.data.Form.*;
 import play.data.validation.Constraints.Email;
 import play.data.validation.Constraints.Required;
 import play.mvc.*;
