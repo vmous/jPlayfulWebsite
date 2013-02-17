@@ -1,4 +1,4 @@
-This is your new Play 2.0 application
-=====================================
+Play!ful Website
+================
 
-This file will be packaged with your application, when using `play dist`.
+A Play!ful, Bootstrapped and H5BPed reesponsive website skeleton.
