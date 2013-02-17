@@ -1,4 +1,4 @@
 Play!ful Website
 ================
 
-A Play!ful, Bootstrapped and H5BPed reesponsive website skeleton.
+A Play!ful, Bootstrapped and H5BPed responsive website skeleton.
