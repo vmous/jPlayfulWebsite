@@ -1,35 +1,31 @@
 package controllers;
 
+import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.collect.ImmutableMap;
 
-import junit.framework.TestCase;
-
 import play.mvc.Result;
 import static play.test.Helpers.*;
 
-public class SignInTest extends TestCase {
-    @Override
+public class SignInTest {
+
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         start(fakeApplication(inMemoryDatabase()));
-        super.setUp();
     }
 
-    @Override
     @After
-    public void tearDown() throws Exception {
-        super.tearDown();
+    public void tearDown() {
     }
 
     @Test
-    public void testIt() {
-        Result res = null;
-
-        // -- Authenticate success
+    public void testAuthenticate() {
+        Result res = null;// -- Authenticate success
 
         res = callAction(
                 controllers.routes.ref.Application.authenticate(),
@@ -53,6 +49,11 @@ public class SignInTest extends TestCase {
         );
         assertEquals(400, status(res));
         assertNull(session(res).get("email"));
+    }
+
+    @Test
+    public void testAuthenticator() {
+        Result res = null;
 
         // -- Authenticator authenticate
 
@@ -70,5 +71,18 @@ public class SignInTest extends TestCase {
         );
         assertEquals(303, status(res));
         assertEquals("/signin", header("Location", res));
+    }
+
+    @Ignore
+    @Test
+    public void testI18N() {
+        Result res = null;
+
+        res = callAction(
+                controllers.routes.ref.Application.setLanguage("en-US"),
+                fakeRequest()
+        );
+
+        // TODO Have to find a way to test cookies!
     }
 }

@@ -10,6 +10,7 @@ import static play.data.Form.*;
 import play.data.validation.Constraints.Email;
 import play.data.validation.Constraints.Required;
 import play.mvc.*;
+import play.mvc.Http.HeaderNames;
 import scala.App;
 
 import views.html.*;
@@ -268,6 +269,34 @@ public class Application extends Controller {
             evaluation.save();
             flash("success", "Thank you for your time. Your evaluation has been successfully saved.");
             res =  redirect(routes.Application.index());
+        }
+
+        return res;
+    }
+
+    /**
+     * <p>The set language action.</p>
+     *
+     * @param code
+     *     The language to be set.
+     *
+     * @return
+     *     A {@code 303 SEE_OTHER} HTTP {@link Result}. Always redirects to
+     *     the referer.
+     */
+    public static Result setLanguage(String code) {
+        Result res = null;
+
+        changeLang(code);
+
+        String[] refererList = request().headers().get(HeaderNames.REFERER);
+        String referer = (refererList.length != 0 ? refererList[0] : null);
+
+        if (referer != null) {
+            res = redirect(referer);
+        }
+        else {
+            res = redirect(routes.Application.welcome());
         }
 
         return res;

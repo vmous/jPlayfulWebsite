@@ -1,14 +1,14 @@
 @(user: User)
 
-@main(Messages("index.title"), user) {
+@main(play.i18n.Messages.get("index.title"), user) {
     <section>
         @if(user != null) {
             <dl id="user">
             @defining(user.name + " " + user.surname) { fullname =>
-                <dt>@Messages("misc.hello") @fullname <span>(@user.email)</span></dt>
+                <dt>@play.i18n.Messages.get("misc.hello") @fullname <span>(@user.email)</span></dt>
             }
-            <dd><a href="@routes.Application.signOut">@Messages("forms.signout")</a></dd>
-            <dd><a href="@routes.Application.evaluation">@Messages("evaluation.title")</a></dd>    
+            <dd><a href="@routes.Application.signOut">@play.i18n.Messages.get("forms.signout")</a></dd>
+            <dd><a href="@routes.Application.evaluation">@play.i18n.Messages.get("evaluation.title")</a></dd>    
             </dl>
         }
     </section>
@@ -16,7 +16,7 @@
     <section>
         <article>
             <header>
-                <h1><a href="">@Messages("index.article.1.title")</a></h1>
+                <h1><a href="">@play.i18n.Messages.get("index.article.1.title")</a></h1>
             </header>
             <iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/ZJPUu1wev3o" frameborder="0">
             </iframe>
@@ -24,13 +24,13 @@
 
         <article>
             <header>
-                <h1><a href="">@Messages("index.article.2.title")</a></h1>
+                <h1><a href="">@play.i18n.Messages.get("index.article.2.title")</a></h1>
             </header>
-            <p>@Messages("index.article.2.p.1")</p>
-            <p>@Messages("index.article.2.p.2")</p>
-            <p>@Messages("index.article.2.p.3")</p>
-            <p>@Messages("index.article.2.p.4")</p>
-            <p>@Messages("index.article.2.p.5")</p>
+            <p>@play.i18n.Messages.get("index.article.2.p.1")</p>
+            <p>@play.i18n.Messages.get("index.article.2.p.2")</p>
+            <p>@play.i18n.Messages.get("index.article.2.p.3")</p>
+            <p>@play.i18n.Messages.get("index.article.2.p.4")</p>
+            <p>@play.i18n.Messages.get("index.article.2.p.5")</p>
         </article>
     </section>
 }

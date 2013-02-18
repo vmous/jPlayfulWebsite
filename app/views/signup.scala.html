@@ -1,10 +1,10 @@
 @(signUpForm: Form[User])
 
-@main(Messages("signup.title"), null) {
+@main(play.i18n.Messages.get("signup.title"), null) {
     
     @helper.form(routes.Application.register) {
         <fieldset>
-            <legend><h1>@Messages("signup.title")</h1></legend>
+            <legend><h1>@play.i18n.Messages.get("signup.title")</h1></legend>
             
             @if(signUpForm.hasErrors) {
                 <div class="alert alert-error">
@@ -26,31 +26,31 @@
             }
     
             <p>
-                <input type="text" name="email" placeholder="@Messages("forms.email")" value="@signUpForm("email").value"> *
+                <input type="text" name="email" placeholder="@play.i18n.Messages.get("forms.email")" value="@signUpForm("email").value"> *
             </p>
             <p>
-                <input type="text" name="confirm-email" placeholder="@Messages("forms.email.confirm")">
+                <input type="text" name="confirm-email" placeholder="@play.i18n.Messages.get("forms.email.confirm")">
             </p>
             <p>
-                <input type="text" name="name" placeholder="@Messages("forms.name")" value="@signUpForm("name").value">
+                <input type="text" name="name" placeholder="@play.i18n.Messages.get("forms.name")" value="@signUpForm("name").value">
             </p>
             <p>
-                <input type="text" name="surname" placeholder="@Messages("forms.surname")" value="@signUpForm("surname").value">
+                <input type="text" name="surname" placeholder="@play.i18n.Messages.get("forms.surname")" value="@signUpForm("surname").value">
             </p>
             <p>
-                <input type="password" name="password" placeholder="@Messages("forms.password")"> *
+                <input type="password" name="password" placeholder="@play.i18n.Messages.get("forms.password")"> *
             </p>
             <p>
-                <input type="password" name="confirm-password" placeholder="@Messages("forms.password.confirm")">
+                <input type="password" name="confirm-password" placeholder="@play.i18n.Messages.get("forms.password.confirm")">
             </p>
             <p>
             <p>
-                * @Messages("forms.required")
+                * @play.i18n.Messages.get("forms.required")
             </p>
         </fieldset>
 
         <div class="form-actions">
-            <button type="submit" class="btn btn-success">@Messages("forms.signup")</button>
+            <button type="submit" class="btn btn-success">@play.i18n.Messages.get("forms.signup")</button>
         </div>
     }
 

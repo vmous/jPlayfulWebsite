@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>@Messages("pagenotfound.title") :(</title>
+        <title>@play.i18n.Messages.get("pagenotfound.title") :(</title>
         <style>
             ::-moz-selection {
                 background: #b3d4fc;
@@ -141,12 +141,12 @@
     </head>
     <body>
         <div class="container">
-            <h1>@Messages("pagenotfound.notfound") <span>:(</span></h1>
-            <p>@Messages("pagenotfound.sorry")</p>
-            <p>@Messages("pagenotfound.potential"):</p>
+            <h1>@play.i18n.Messages.get("pagenotfound.notfound") <span>:(</span></h1>
+            <p>@play.i18n.Messages.get("pagenotfound.sorry")</p>
+            <p>@play.i18n.Messages.get("pagenotfound.potential"):</p>
             <ul>
-                <li>@Messages("pagenotfound.potential.1")</li>
-                <li>@Messages("pagenotfound.potential.2")</li>
+                <li>@play.i18n.Messages.get("pagenotfound.potential.1")</li>
+                <li>@play.i18n.Messages.get("pagenotfound.potential.2")</li>
             </ul>
             <script>
                 var GOOG_FIXURL_LANG = (navigator.language || '').slice(0,2),GOOG_FIXURL_SITE = location.host;
