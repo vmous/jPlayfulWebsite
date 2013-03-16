@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import play.data.format.Formats.NonEmpty;
 import play.data.validation.Constraints.Email;
@@ -16,9 +17,9 @@ import play.db.ebean.Model;
  * </p>
  *
  * @author billy
- *
  */
 @Entity
+@Table(name = "users")
 public class User extends Model {
     /**
      * The user's email.

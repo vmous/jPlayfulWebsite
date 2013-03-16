@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import play.db.ebean.Model;
 
@@ -13,15 +15,15 @@ import play.db.ebean.Model;
  * </p>
  *
  * @author billy
- *
  */
 @Entity
+@Table(name = "evaluations")
 public class Evaluation extends Model {
     /**
      * The evaluation's unique id.
      */
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="evaluations_id_seq")
     protected Long id;
 
     /**
