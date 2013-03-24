@@ -1,8 +1,8 @@
-@(evaluationForm: Form[Evaluation], user: User)
+@(evaluationForm: Form[_])
 
-@main(play.i18n.Messages.get("evaluation.title"), user) {
+@main(play.i18n.Messages.get("evaluation.title")) {
 
-    @helper.form(routes.Application.evaluate) {
+    @helper.form(routes.Application.doEvaluation) {
         <fieldset>
             <legend><h1>@play.i18n.Messages.get("evaluation.title")</h1></legend>
             

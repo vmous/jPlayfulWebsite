@@ -3,31 +3,56 @@
 # ~~~~
 
 # Welcome
-GET     /                           controllers.Application.welcome()
+GET     /                               controllers.Application.welcome()
 
-# Home
-GET     /index                      controllers.Application.index()
+GET     /index                          controllers.Application.index()
 
-# Sign-up
-GET     /signup                     controllers.Application.signUp()
-POST    /register                   controllers.Application.register()
+GET     /signup                         controllers.Application.signUp()
+POST    /signup                         controllers.Application.doSignUp()
 
-# Sign-in / Log-in
-GET     /signin                     controllers.Application.signIn()
-POST    /authenticate               controllers.Application.authenticate()
+GET     /signin                         controllers.Application.signIn()
+POST    /signin                         controllers.Application.doSignIn()
 
-# Sign-out / Log-out
-GET     /signout                     controllers.Application.signOut()
+GET     /authenticate/:provider         com.feth.play.module.pa.controllers.Authenticate.authenticate(provider: String)
 
-# Evaluation
-GET     /evaluation                 controllers.Application.evaluation()
-POST    /evaluate                   controllers.Application.evaluate()
+GET     /signout                        com.feth.play.module.pa.controllers.Authenticate.logout()
+
+GET     /accounts/password/change       controllers.Account.changePassword()
+POST    /accounts/password/change       controllers.Account.doChangePassword()
+
+GET     /login/password/forgot          controllers.SignUp.forgotPassword(email: String ?= "")
+POST    /login/password/forgot          controllers.SignUp.doForgotPassword()
+
+GET     /accounts/password/reset/:token controllers.SignUp.resetPassword(token: String)
+POST    /accounts/password/reset        controllers.SignUp.doResetPassword()
+
+GET     /accounts/verify/:token         controllers.SignUp.verify(token: String)
+GET     /accounts/exists                controllers.SignUp.exists()
+
+GET     /accounts/unverified            controllers.SignUp.unverified()
+GET     /authenticate/:provider/denied  controllers.SignUp.oAuthDenied(provider: String)
+
+GET     /accounts/link                  controllers.Account.askLink()
+POST    /accounts/link                  controllers.Account.doLink()
+
+GET     /accounts/merge                 controllers.Account.askMerge()
+POST    /accounts/merge                 controllers.Account.doMerge()
+
+GET     /accounts/verify                controllers.Account.verifyEmail()
+
+GET     /accounts/add                   controllers.Account.link()
+
+GET     /profile                        controllers.Application.profile()
+
+GET     /evaluation                     controllers.Application.evaluation()
+POST    /evaluation                     controllers.Application.doEvaluation()
+
 
 # Set language
-GET     /lang/:code                 controllers.Application.setLanguage(code)
+GET     /lang/:code                     controllers.Application.setLanguage(code)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file                   controllers.Assets.at(path="/public", file)
 
 # Set of helper methods that makes it easy to reference WebJar assets
-GET     /webjars/*file              controllers.WebJarAssets.at(file)
+GET     /webjars/*file                  controllers.WebJarAssets.at(file)

@@ -2,18 +2,21 @@
 
 - &bob !!models.User
     email: bob@example.com
-    name: Bob
-    surname: Ross
-    password: secret
+    name: Bob Ross
+    firstName: Bob
+    lastName: Ross
+#    password: secret
 
 - &jane !!models.User
     email: jane@example.com
-    name: Jane
-    surname: Fonda
-    password: secret
+    name: Jane Fonda
+    firstName: Jane
+    lastName: Fonda
+#    password: secret
 
 - &jeff !!models.User
     email: jeff@example.com
-    name: Jeff
-    surname: Beck
-    password: secret
+    name: Jeff Beck
+    firstName: Jeff
+    lastName: Beck
+#    password: secret

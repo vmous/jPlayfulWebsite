@@ -1,8 +1,8 @@
-@(signInForm: Form[Application.SignIn])
+@(signInForm: Form[_])
 
-@main(play.i18n.Messages.get("signin.title"), null) {
+@main(play.i18n.Messages.get("signin.title")) {
 
-    @helper.form(routes.Application.authenticate) {
+    @helper.form(routes.Application.doSignIn) {
         <fieldset>
             <legend><h1>@play.i18n.Messages.get("signin.title")</h1></legend>
 
@@ -43,11 +43,18 @@
                         <label class="checkbox">
                             <input type="checkbox"> @play.i18n.Messages.get("forms.rememberme")
                         </label>
-                        <button type="submit" class="btn">@play.i18n.Messages.get("forms.signin")</button> @play.i18n.Messages.get("misc.or") <a href="@routes.Application.signUp">@play.i18n.Messages.get("forms.signup")</a>
                     </div>
                 </div>
+                </br>
+                <button type="submit" class="btn btn-primary">@play.i18n.Messages.get("forms.signin")</button> @play.i18n.Messages.get("misc.or") <a href="@routes.Application.signUp">@play.i18n.Messages.get("forms.signup")</a>
             </form>
         </fieldset>            
     }
+    
+    <div class="span3">
+		@play.i18n.Messages.get("playauthenticate.login.oauth")
+		@* Display list of available providers *@
+		@_providerPartial(skipCurrent=false)
+	</div>
 
 }

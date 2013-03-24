@@ -1,5 +1,5 @@
 # Application
-app.name = Παιχνιδιάρικη Ιστοσελίδα
+app.name = Παιχνιδι!άρικη Ιστοσελίδα
 
 # Forms
 forms.signin = Είσοδος
@@ -10,8 +10,7 @@ forms.email = Διεύθυνση Ηλ.Ταχυδρομείου
 forms.email.confirm = Επιβεβαίωση Διεύθυνσης Ηλ. Ταχυδρομείου
 forms.password = Κωδικός Πρόσβασης
 forms.password.confirm = Επιβεβαίωση Κωδικού Πρόσβασης
-forms.name = Όνομα
-forms.surname = Επώνυμο
+forms.name = Ονοματεπώνυμο
 forms.rememberme = Θυμίσου με
 forms.required = Υποχρεωτικό πεδίο
 
@@ -35,8 +34,9 @@ index.article.2.p.5 = Από τότε, οι δύο ομάδες εργάζοντ
 
 # Main
 main.home = Αρχική
-main.about = Σχετικά
+main.evaluation = Εκτίμηση
 main.contact = Επικοινωνία
+main.about = Σχετικά
 main.dropdown = Πτυσσόμενο
 main.languages = Γλώσσες
 main.languages.enus = Αγγλικά (US)

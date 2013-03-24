@@ -1,14 +1,11 @@
-@(user: User)
+@(user: User = null)
 
-@main(play.i18n.Messages.get("index.title"), user) {
+@main(play.i18n.Messages.get("index.title")) {
     <section>
         @if(user != null) {
             <dl id="user">
-            @defining(user.name + " " + user.surname) { fullname =>
-                <dt>@play.i18n.Messages.get("misc.hello") @fullname <span>(@user.email)</span></dt>
-            }
-            <dd><a href="@routes.Application.signOut">@play.i18n.Messages.get("forms.signout")</a></dd>
-            <dd><a href="@routes.Application.evaluation">@play.i18n.Messages.get("evaluation.title")</a></dd>    
+                <dt>@play.i18n.Messages.get("misc.hello") @user.name <span>(@user.email)</span></dt>
+                <dd><a href="@routes.Application.evaluation()">@play.i18n.Messages.get("evaluation.title")</a></dd>    
             </dl>
         }
     </section>

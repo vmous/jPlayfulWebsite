@@ -1,5 +1,5 @@
 # Application
-app.name = Playful Website
+app.name = Play!ful Website
 
 # Forms
 forms.signin = Sign-in
@@ -10,8 +10,7 @@ forms.email = Email
 forms.email.confirm = Confirm Email
 forms.password = Password
 forms.password.confirm = Confirm Password
-forms.name = Name
-forms.surname = Surname
+forms.name = Full Name
 forms.rememberme = Remember Me
 forms.required = Required fields
 
@@ -35,8 +34,9 @@ index.article.2.p.5 = Since then, both groups have been working together.
 
 # Main
 main.home = Home
-main.about = About
+main.evaluation = Evaluation
 main.contact = Contact
+main.about = About
 main.dropdown = Dropdown
 main.languages = Languages
 main.languages.enus = English (US)
